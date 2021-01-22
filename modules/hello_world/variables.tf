@@ -12,7 +12,7 @@ variable "content" {
 
 variable "file_permission" {
   description = "File permission"
-  default = "0644"
-  type = string
+  default     = "0644"
+  type        = string
 
 }

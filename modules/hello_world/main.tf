@@ -4,7 +4,7 @@ locals {
 }
 
 resource "local_file" "foo" {
-  content  = local.content
-  filename = local.filename
+  content         = local.content
+  filename        = local.filename
   file_permission = var.file_permission
 }
