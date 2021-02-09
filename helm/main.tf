@@ -16,6 +16,7 @@ resource "helm_release" "prometheus" {
 
 }
 
+
 module "foo" {
   source = "git::https://github.com/CuddlyDemos/terraform-sandbox.git//modules/hello_world?ref=helm/foo/v1.0.0"
 }
