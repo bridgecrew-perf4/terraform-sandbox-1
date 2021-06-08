@@ -16,6 +16,9 @@ locals {
       # oops this cluster does not have the feature flag set???
     }
   }
+
+  zones = ["zone-1", "zone-2", "zone-3"]
+  instances = ["app-1", "app-2", "app-3", "app-4", "app-5"]
 }
 
 module "hello" {
@@ -24,6 +27,11 @@ module "hello" {
   file_name = each.key
 }
 
+resource "local_file" "instances" {
+  for_each = toset(local.instances)
+  content  = element(local.zones, index(local.instances, each.key))
+  filename = each.key
+}
 
 output "clusters_with_awesome_feature" {
   value = [for k, v in local.clusters : k if try(v.awesome_feature_enabled == true, false)]
